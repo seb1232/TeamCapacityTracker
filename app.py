@@ -17,146 +17,139 @@ st.set_page_config(
 # Apply custom styling with dark theme
 st.markdown("""
 <style>
-    /* Global Background */
-    .main, .stApp {
-        background: linear-gradient(135deg, #1e1e1e 30%, #252525 100%);
-        color: #f1f1f1; /* Brighter white text */
-        font-family: 'Poppins', sans-serif; /* Modern font */
+    .main {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
     }
-
-    /* Containers */
+    .stApp {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
     .css-1d391kg {
-        background: #2b2b2b;
-        border-radius: 12px;
+        background-color: #2d2d2d;
+        border-radius: 10px;
         padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         margin-bottom: 20px;
     }
-
-    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 10px;
-        background: transparent;
+        background-color: #1e1e1e;
     }
     .stTabs [data-baseweb="tab"] {
         height: 50px;
-        background: #333;
-        border-radius: 8px 8px 0 0;
-        padding: 12px 18px;
-        font-weight: 600;
-        color: #d4d4d4;
-        transition: all 0.3s ease;
+        white-space: pre-wrap;
+        background-color: #2d2d2d;
+        border-radius: 5px 5px 0 0;
+        gap: 1px;
+        padding: 10px 16px;
+        font-weight: 500;
+        color: #e0e0e0;
     }
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(90deg, #81c784, #4caf50);
-        color: #ffffff;
-        border-bottom: 4px solid #66bb6a;
-        box-shadow: 0 2px 6px rgba(0, 255, 150, 0.4);
+        background-color: #3d3d3d;
+        border-bottom: 3px solid #81c784;
+        color: #81c784;
     }
-
-    /* Headings */
     h1 {
-        color: #4ef8a5;
-        font-weight: 700;
+        color: #81c784;
         padding-bottom: 10px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid #3d3d3d;
     }
     h2 {
-        color: #66e5a4;
+        color: #66bb6a;
+        margin-top: 30px;
     }
     h3 {
-        color: #4ae290;
+        color: #4caf50;
     }
-
-    /* Buttons */
     .stButton>button {
-        background: linear-gradient(90deg, #4ef8a5, #3ddc84);
-        color: #ffffff;
-        border-radius: 6px;
-        padding: 12px 24px;
-        font-weight: 600;
+        background-color: #43a047;
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-weight: 500;
         border: none;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s;
     }
     .stButton>button:hover {
-        background: linear-gradient(90deg, #3ddc84, #2fb86e);
-        box-shadow: 0 4px 8px rgba(0, 255, 150, 0.3);
+        background-color: #4caf50;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
-
-    /* Download Link */
     .download-link {
         text-decoration: none;
-        background: linear-gradient(90deg, #3ddc84, #2fb86e);
+        background-color: #43a047;
         color: white;
-        padding: 10px 18px;
-        border-radius: 6px;
-        transition: background 0.3s;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
     }
     .download-link:hover {
-        background: linear-gradient(90deg, #2fb86e, #249f5b);
+        background-color: #4caf50;
     }
-
-    /* Metric Cards */
     .metric-card {
-        background: linear-gradient(135deg, #2d2d2d, #1f1f1f);
-        padding: 16px;
-        border-radius: 10px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        margin-bottom: 12px;
-        color: #ffffff;
+        background-color: #2d2d2d;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 10px;
+        color: #e0e0e0;
     }
-
-    /* Priority Labels */
     .high-priority {
-        color: #ff6b6b;
+        color: #ef5350;
         font-weight: bold;
     }
     .medium-priority {
-        color: #ffa94d;
+        color: #ffb74d;
         font-weight: bold;
     }
     .low-priority {
-        color: #6ef89e;
+        color: #81c784;
         font-weight: bold;
     }
-
-    /* Dark Theme for DataFrames */
-    .stDataFrame, .dataframe {
-        background: #2e2e2e;
-        color: #ffffff;
-        border-radius: 8px;
+    /* Dark theme for dataframes */
+    .stDataFrame {
+        background-color: #2d2d2d;
     }
-
-    /* Input Fields */
+    .dataframe {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+    }
+    /* Make text inputs and number inputs visible on dark background */
     .stTextInput>div>div>input, .stNumberInput>div>div>input {
-        background: #333;
-        color: #ffffff;
-        border: 1px solid #4ef8a5;
-        border-radius: 6px;
-        padding: 8px;
-        transition: border 0.3s ease;
+        background-color: #3d3d3d;
+        color: #e0e0e0;
     }
-    .stTextInput>div>div>input:focus, .stNumberInput>div>div>input:focus {
-        border: 1px solid #3ddc84;
-        box-shadow: 0 0 6px rgba(0, 255, 150, 0.4);
+    /* File uploader styling */
+    .stFileUploader>div {
+        background-color: #2d2d2d;
+        border: 1px dashed #43a047;
+        padding: 20px;
+        border-radius: 5px;
     }
-
-    /* Sidebar */
+    /* Other Streamlit elements */
+    .stSelectbox>div>div {
+        background-color: #3d3d3d;
+    }
+    .stMultiSelect>div>div {
+        background-color: #3d3d3d;
+    }
+    p, li, span {
+        color: #e0e0e0;
+    }
+    /* Sidebar tweaks */
     section[data-testid="stSidebar"] {
-        background: #252525;
+        background-color: #2d2d2d;
     }
-    section[data-testid="stSidebar"] .stTextInput>div>div>input,
+    section[data-testid="stSidebar"] .stTextInput>div>div>input, 
     section[data-testid="stSidebar"] .stNumberInput>div>div>input,
     section[data-testid="stSidebar"] .stSelectbox>div>div {
-        background: #333;
-        border: 1px solid #4ef8a5;
+        background-color: #3d3d3d;
     }
-
-    /* Info Box */
+    /* Info box */
     .stAlert {
-        background: #3a3a3a !important;
-        color: #ffffff !important;
-        border-left: 5px solid #4ef8a5 !important;
+        background-color: #3d3d3d !important;
+        color: #e0e0e0 !important;
     }
 </style>
 
